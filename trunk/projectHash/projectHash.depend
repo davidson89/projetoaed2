@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1338509803 source:/home/ufabc/Área de trabalho/projectHash/Les.cpp
+	"Les.h"
+
+1338513766 /home/ufabc/Área de trabalho/projectHash/Les.h
+	<string>
+
+1338514262 source:/home/ufabc/Área de trabalho/projectHash/HashTable.cpp
+	"HashTable.h"
+	"Les.h"
+
+1338514837 /home/ufabc/Área de trabalho/projectHash/HashTable.h
+	"Les.h"
+
+1338513496 source:/home/ufabc/Área de trabalho/projectHash/main.cpp
+	<iostream>
+	"Les.h"
+
