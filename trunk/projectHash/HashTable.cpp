@@ -10,6 +10,7 @@ HashTable::HashTable(int size, float c)
 }
 
 void HashTable::addWord(string value){
+
 }
 
 void HashTable::functionHash(int valueCalculated){
@@ -18,7 +19,7 @@ void HashTable::functionHash(int valueCalculated){
 int HashTable::calcValueWord(string valueWord){
 }
 
-int HashTable::returnPositionValue(string value){
+int HashTable::getPositionValue(string value){
 }
 
 HashTable::~HashTable()
