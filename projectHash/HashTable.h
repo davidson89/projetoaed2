@@ -13,7 +13,7 @@ class HashTable
         void addWord(string);
         void functionHash(int);
         int calcValueWord(string);
-        int returnPositionValue(string);
+        int getPositionValue(string);
         virtual ~addWord();
         virtual ~functionHash();
         virtual ~calcValueWord();
