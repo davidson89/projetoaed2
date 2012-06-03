@@ -1,8 +1,9 @@
 #include "Les.h"
 
-Les::Les()
+Les::Les(string valor, Les *proxLes)
 {
-    //ctor
+    this->valor = valor;
+    this->lesProx = proxLes;
 }
 
 Les::~Les()
