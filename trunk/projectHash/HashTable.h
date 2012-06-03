@@ -7,17 +7,14 @@ class HashTable
 {
     public:
         HashTable(int, float);
+        virtual ~HashTable();
         int m;
         float c;
         Les *les;
         void addWord(string);
-        void functionHash(int);
+        int functionHash(int);
         int calcValueWord(string);
         int getPositionValue(string);
-        virtual ~addWord();
-        virtual ~functionHash();
-        virtual ~calcValueWord();
-        virtual ~HashTable();
     protected:
     private:
 };
