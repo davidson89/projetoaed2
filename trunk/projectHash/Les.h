@@ -8,10 +8,12 @@ class Les
 {
 
     public:
-        Les(string valor,Les *proxLes);
+        Les();
         virtual ~Les();
         string valor;
         Les *lesProx;
+        void setValor(string valor);
+        void setProxLes(Les *proxLes);
     protected:
     private:
 };
