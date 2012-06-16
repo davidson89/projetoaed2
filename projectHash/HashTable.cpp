@@ -8,16 +8,26 @@ using namespace std;
 
 HashTable::HashTable(int size, float c)
 {
-    this->m=size;
-    this->c=c;
-    //this->les=new Les[this->m]();
+    this->m = size;
+    this->c = c;
+    this->les = new Les[m];
 }
 
 void HashTable::addWord(string value){
     int valorDaString = calcValueWord(value);
     int indice = functionHash(valorDaString);
-    Les lesNew = Les(value , NULL);
-    //this->les[indice] =
+    Les *lesNew = new Les();
+    lesNew->setValor(value);
+    lesNew->setProxLes(NULL);
+    if(this->les[indice] == NULL){
+        this->les[indice] == lesNew;
+    }else{
+        Les aux = this->les[indice];
+        while(aux->lesProx!= NULL){
+            aux = aux->lesProx;
+        }
+        aux->lesProx = lesNew;
+    }
 
 }
 

@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    HashTable hashTable = new HashTable(M,C);
+    HashTable hashTable = new HashTable(49157 , 0.618);
 
 
     return 0;
