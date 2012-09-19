@@ -2,7 +2,9 @@
 #define HASHTABLE_H
 #include "Les.h"
 #include <string>
-
+#include <iostream>
+#include <fstream>
+using namespace std;
 class HashTable
 {
     public:
@@ -10,11 +12,14 @@ class HashTable
         virtual ~HashTable();
         int m;
         float c;
-        Les* les;
-        void addWord(string value);
-        int functionHash(int valueCalculated);
-        int calcValueWord(string valueWord);
-        int getPositionValue(string value);
+        Les** les;
+        int *qtdPosicao;
+        void addWord(string);
+        int functionHash(int);
+        int calcValueWord(string);
+        int getPositionValue(string);
+        void imprime();
+        void imprimeTxt(string fileName);
     protected:
     private:
 };
