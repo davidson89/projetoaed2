@@ -1,16 +1,9 @@
 #include "Les.h"
 
-Les::Les()
+Les::Les(string valor)
 {
-
-}
-
-void Les::setValor(string valor){
-    this->valor = valor;
-}
-
-void Les::setProxLes(Les *proxLes){
-    this->lesProx = proxLes;
+this->valor = valor;
+this->lesProx= NULL;
 }
 
 Les::~Les()

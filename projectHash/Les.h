@@ -8,7 +8,7 @@ class Les
 {
 
     public:
-        Les();
+        Les(string valor);
         virtual ~Les();
         string valor;
         Les *lesProx;
