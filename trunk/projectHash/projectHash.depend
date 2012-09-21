@@ -68,3 +68,32 @@
 	<stdio.h>
 	<sstream>
 
+1348186309 source:/home/ufabc/Documentos/jj/projetoaed2/projectHash/Les.cpp
+	"Les.h"
+
+1348186309 /home/ufabc/Documentos/jj/projetoaed2/projectHash/Les.h
+	<string>
+
+1348186309 source:/home/ufabc/Documentos/jj/projetoaed2/projectHash/main.cpp
+	<iostream>
+	"Les.h"
+	"HashTable.h"
+	<cstdlib>
+	<fstream>
+	<stdio.h>
+
+1348188229 /home/ufabc/Documentos/jj/projetoaed2/projectHash/HashTable.h
+	"Les.h"
+	<string>
+	<iostream>
+	<fstream>
+
+1348188175 source:/home/ufabc/Documentos/jj/projetoaed2/projectHash/HashTable.cpp
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"HashTable.h"
+	"Les.h"
+	<iostream>
+	<fstream>
+
