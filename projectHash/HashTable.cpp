@@ -38,7 +38,7 @@ void HashTable::addWord(string value){
 
     } else
     {
-        // caso contrario percorrmos a lista até chegar no ultimo
+        // caso contrario percorremos a lista até chegar no ultimo
     Les *Cel = this->les[indice];
     while (Cel->lesProx != NULL)
         {
@@ -51,6 +51,31 @@ void HashTable::addWord(string value){
 
 }
 
+void HashTable::imprimeHistoGrama()
+{
+int i;
+int qtdLinha = 0;
+ for(i=0;i<this->m;i++)
+    {
+     qtdLinha = QtdLinha(this->les[i]);
+     this->qtdPosicao[qtdLinha]++;
+    }
+}
+
+int HashTable::QtdLinha(Les *celula)
+{
+ int qtd =0;
+  if ( celula == NULL) return 0;
+
+  while(celula !=NULL)
+  {
+   celula = celula->lesProx;
+   qtd++;
+  }
+
+  return qtd;
+
+}
 int HashTable::functionHash(int valueCalculated){
     float resultParcial = valueCalculated*(this->c);
     float resultConstant = resultParcial - (float)((int)resultParcial);
@@ -126,6 +151,7 @@ void HashTable::imprimeTxt(string fileName)
 }
 
 int HashTable::getPositionValue(string value){
+    return 0;
 }
 
 HashTable::~HashTable()
