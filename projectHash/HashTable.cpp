@@ -23,7 +23,7 @@ HashTable::HashTable(int size, float c)
 void HashTable::addWord(string value){
 
 
-    // valoeeer da strinvg convertendo em numero
+    // valoeeer da string convertendo em numero
     int valorDaString = calcValueWord(value);
    // calcula o indice pela função hash
     int indice = functionHash(valorDaString);
