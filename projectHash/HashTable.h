@@ -20,7 +20,7 @@ class HashTable
         int getPositionValue(string);
         void imprime();
         void imprimeTxt(string fileName);
-        void imprimeHistoGrama();
+        void imprimeHistoGrama(string fileName);
         int QtdLinha(Les *celula);
     protected:
     private:

@@ -39,34 +39,34 @@
 	"Les.h"
 	<string>
 
-1346014449 source:/home/jurandir/Documents/projetoaed2/projectHash/HashTable.cpp
+1348437143 source:/home/jurandir/Documents/projetoaed2/projectHash/HashTable.cpp
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
 	"HashTable.h"
 	"Les.h"
 	<iostream>
+	<fstream>
 
-1339885272 /home/jurandir/Documents/projetoaed2/projectHash/HashTable.h
+1348436534 /home/jurandir/Documents/projetoaed2/projectHash/HashTable.h
 	"Les.h"
 	<string>
 	<iostream>
 	<fstream>
 
-1339369659 /home/jurandir/Documents/projetoaed2/projectHash/Les.h
+1348435967 /home/jurandir/Documents/projetoaed2/projectHash/Les.h
 	<string>
 
-1339374239 source:/home/jurandir/Documents/projetoaed2/projectHash/Les.cpp
+1348435967 source:/home/jurandir/Documents/projetoaed2/projectHash/Les.cpp
 	"Les.h"
 
-1346014359 source:/home/jurandir/Documents/projetoaed2/projectHash/main.cpp
+1348436741 source:/home/jurandir/Documents/projetoaed2/projectHash/main.cpp
 	<iostream>
 	"Les.h"
 	"HashTable.h"
 	<cstdlib>
 	<fstream>
 	<stdio.h>
-	<sstream>
 
 1348186309 source:/home/ufabc/Documentos/jj/projetoaed2/projectHash/Les.cpp
 	"Les.h"

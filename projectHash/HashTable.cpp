@@ -51,22 +51,34 @@ void HashTable::addWord(string value){
 
 }
 
-void HashTable::imprimeHistoGrama()
+void HashTable::imprimeHistoGrama(string fileName)
 {
 int i;
 int qtdLinha = 0;
+
  for(i=0;i<this->m;i++)
     {
      qtdLinha = QtdLinha(this->les[i]);
      this->qtdPosicao[qtdLinha]++;
     }
+
+  ofstream File (fileName.data());
+  if (!File.is_open())
+  {
+    cout << "Não foi possível abrir o arquivo";
+    return;
+  }
+
+  for(i=0;i<this->m;i++)
+  {
+    File << i << "," << this->qtdPosicao[i] <<endl ;
+
+  }
 }
 
 int HashTable::QtdLinha(Les *celula)
 {
  int qtd =0;
-  if ( celula == NULL) return 0;
-
   while(celula !=NULL)
   {
    celula = celula->lesProx;
@@ -123,7 +135,7 @@ void HashTable::imprimeTxt(string fileName)
    ofstream File (fileName.data());
   if (!File.is_open())
   {
-    cout << "Arquivo não encontrado";
+    cout << "Não foi possível abrir o arquivo";
     return;
   }
 
