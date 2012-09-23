@@ -34,11 +34,9 @@ int main()
 
     }
 
-  hashTable->imprime();
+
   hashTable->imprimeTxt("saida.txt");
-
-  cout<< hashTable->les[47582]->valor << " " << hashTable->les[47582]->lesProx->valor << endl;
-
+  hashTable->imprimeHistoGrama("saidaHistograma.txt");
 
 
 
