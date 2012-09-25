@@ -7,6 +7,12 @@
 #include <fstream>
 using namespace std;
 
+/**
+ * HashTable - Classe usada para guardar palavras
+ * @param  size tamanho da tabela hash
+ * @param c fator de carga da tabela
+ *
+**/
 HashTable::HashTable(int size, float c)
 {
     this->m=size;
@@ -51,11 +57,10 @@ void HashTable::addWord(string value){
 
 }
 
-void HashTable::imprimeHistoGrama(string fileName)
+void HashTable::imprimeHistoGrama()
 {
 int i;
 int qtdLinha = 0;
-
  for(i=0;i<this->m;i++)
     {
      qtdLinha = QtdLinha(this->les[i]);
@@ -98,7 +103,6 @@ int HashTable::functionHash(int valueCalculated){
 int HashTable::calcValueWord(string valueWord){
     int i;
     int soma=0;
-    char valueLetra[1];
     int sizeWord = valueWord.length();
     for(i=0; i<=sizeWord; i++){
         int numero = static_cast<char>(valueWord[i]);
@@ -114,19 +118,19 @@ void HashTable::imprime(){
     {
        if(this->les[i] ==NULL)
        {
-            cout << " "<< endl ;
+            cout << "linha " << i << ": \n"<<  endl ;
             continue;
        }
        Les *celula = this->les[i];
 
-        cout << " linha: " << i << " | ";
+        cout << "linha " << i << ": ";
        while(celula!=NULL)
        {
         cout << celula->valor << " | " ;
 
         celula=celula->lesProx;
        }
-      cout <<endl ;
+      cout << "\n" << endl ;
     }
 
 }
@@ -144,26 +148,46 @@ void HashTable::imprimeTxt(string fileName)
     {
        if(this->les[i] ==NULL)
        {
-            File << " "<< endl ;
+            File << "linha " << i << ": \n"<<  endl ;
             continue;
        }
        Les *celula = this->les[i];
 
-        File << " linha: " << i << " | ";
+       File  << "linha " << i << ": ";
        while(celula!=NULL)
        {
         File << celula->valor << " | " ;
 
         celula=celula->lesProx;
        }
-      File <<endl ;
+       File << "\n" << endl;
     }
 
 
 }
 
-int HashTable::getPositionValue(string value){
-    return 0;
+void HashTable::imprimePositionValue(string value){
+    int indice = getIndiceValue(value);
+    int count = 0;
+    Les *auxLes = this->les[indice];
+    if(auxLes==NULL){
+        cout << "Palavra não encontrada";
+        return;
+    }
+    while(auxLes!=NULL){
+        if(auxLes->valor==value){
+            cout << value << ": " << indice << " " << count << endl;
+            return;
+        }
+        count ++;
+        auxLes = auxLes->lesProx;
+    }
+    cout << value << ": " << indice << " -1" << endl;
+}
+
+int HashTable::getIndiceValue(string value) {
+    int valorDaString = calcValueWord(value);
+    return functionHash(valorDaString);
 }
 
 HashTable::~HashTable()

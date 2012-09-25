@@ -15,15 +15,16 @@ class HashTable
         Les** les;
         int *qtdPosicao;
         void addWord(string);
-        int functionHash(int);
-        int calcValueWord(string);
-        int getPositionValue(string);
         void imprime();
         void imprimeTxt(string fileName);
         void imprimeHistoGrama(string fileName);
-        int QtdLinha(Les *celula);
+        void imprimePositionValue(string);
     protected:
     private:
+    int QtdLinha(Les *celula);
+    int getIndiceValue(string);
+    int functionHash(int);
+    int calcValueWord(string);
 };
 
 #endif // HASHTABLE_H
