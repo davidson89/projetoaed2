@@ -1,6 +1,5 @@
 #include <iostream>
 #include "HashTable.h"
-#include "BuildMenu.h"
 #define  M 49157
 #define  C 0.618
 #include <cstdlib>

@@ -60,11 +60,11 @@ void HashTable::addWord(string value){
 void HashTable::imprimeHistoGrama(string fileName)
 {
 int i;
-int qtdLinha = 0;
+int qtd = 0;
  for(i=0;i<this->m;i++)
     {
-     qtdLinha = qtdLinha(this->les[i]);
-     this->qtdPosicao[qtdLinha]++;
+     qtd = qtdLinha(this->les[i]);
+     this->qtdPosicao[qtd]++;
     }
 
   ofstream File (fileName.data());
