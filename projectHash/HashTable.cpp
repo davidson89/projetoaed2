@@ -57,13 +57,13 @@ void HashTable::addWord(string value){
 
 }
 
-void HashTable::imprimeHistoGrama()
+void HashTable::imprimeHistoGrama(string fileName)
 {
 int i;
 int qtdLinha = 0;
  for(i=0;i<this->m;i++)
     {
-     qtdLinha = QtdLinha(this->les[i]);
+     qtdLinha = qtdLinha(this->les[i]);
      this->qtdPosicao[qtdLinha]++;
     }
 
@@ -81,7 +81,7 @@ int qtdLinha = 0;
   }
 }
 
-int HashTable::QtdLinha(Les *celula)
+int HashTable::qtdLinha(Les *celula)
 {
  int qtd =0;
   while(celula !=NULL)
