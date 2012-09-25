@@ -21,7 +21,7 @@ class HashTable
         void imprimePositionValue(string);
     protected:
     private:
-    int QtdLinha(Les *celula);
+    int qtdLinha(Les *celula);
     int getIndiceValue(string);
     int functionHash(int);
     int calcValueWord(string);
