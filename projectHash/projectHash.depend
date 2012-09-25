@@ -97,3 +97,39 @@
 	<iostream>
 	<fstream>
 
+1348447020 source:/home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/HashTable.cpp
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"HashTable.h"
+	"Les.h"
+	<iostream>
+	<fstream>
+
+1348430079 /home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/HashTable.h
+	"Les.h"
+	<string>
+	<iostream>
+	<fstream>
+
+1348197284 /home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/Les.h
+	<string>
+
+1348197284 source:/home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/Les.cpp
+	"Les.h"
+
+1348447595 source:/home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/main.cpp
+	<iostream>
+	"HashTable.h"
+	"BuildMenu.h"
+	<cstdlib>
+	<fstream>
+	<stdio.h>
+
+1348434011 /home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/BuildMenu.h
+	<stdio.h>
+	<iostream>
+
+1348434798 source:/home/davidson/Documentos/Projetos/AED2/projetoaed2/projectHash/BuildMenu.cpp
+	"BuildMenu.h"
+
