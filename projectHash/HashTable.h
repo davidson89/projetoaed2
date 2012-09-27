@@ -19,6 +19,7 @@ class HashTable
         void imprimeTxt(string fileName);
         void imprimeHistoGrama(string fileName);
         void imprimePositionValue(string);
+        void removeWord(string word);
     protected:
     private:
     int qtdLinha(Les *celula);
