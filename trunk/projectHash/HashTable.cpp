@@ -190,6 +190,27 @@ int HashTable::getIndiceValue(string value) {
     return functionHash(valorDaString);
 }
 
+void HashTable::removeWord(string word){
+    int valorDaString = calcValueWord(word);
+   // calcula o indice pela função hash
+    int indice = functionHash(valorDaString);
+
+    Les *anterior = this->les[indice];
+    Les *atual = this->les[indice]->lesProx;
+    for (atual; atual!=NULL; atual=atual->lesProx){
+        if (word==atual->valor){
+            anterior->lesProx = atual->lesProx;
+            free(atual);
+        }
+        anterior=atual;
+    }
+    if(this->les[indice]->valor==word){
+        Les *aux = this->les[indice];
+        //free(aux);
+        this->les[indice] = this->les[indice]->lesProx;
+    }
+}
+
 HashTable::~HashTable()
 {
     //dtor
