@@ -15,6 +15,7 @@ class HashTable
         Les** les;
         int *qtdPosicao;
         void addWord(string);
+        void addWord_2(string);
         void imprime();
         void imprimeTxt(string fileName);
         void imprimeHistoGrama(string fileName);
@@ -26,6 +27,7 @@ class HashTable
     int getIndiceValue(string);
     int functionHash(int);
     int calcValueWord(string);
+    int calcValueWord_2(string);
 };
 
 #endif // HASHTABLE_H
