@@ -57,6 +57,38 @@ void HashTable::addWord(string value){
 
 }
 
+void HashTable::addWord_2(string value){
+
+
+    // valoeeer da string convertendo em numero
+    unsigned long  valorDaString = calcValueWord_2(value);
+   // calcula o indice pela função hash
+    int indice = functionHash(valorDaString);
+
+
+   // cria uma nova celula com a string passada
+    Les *newCel = new Les(value);
+    // se o indice de destino tiver a primeira posiçao nula entao newcel se torna o primeiro
+    if( this->les[indice] == NULL)
+    {
+    // cout << "indice vazio " << indice << endl;
+     this->les[indice] = newCel;
+
+    } else
+    {
+        // caso contrario percorremos a lista até chegar no ultimo
+    Les *Cel = this->les[indice];
+    while (Cel->lesProx != NULL)
+        {
+            Cel = Cel->lesProx;
+        }
+        Cel->lesProx = newCel;
+    }
+
+    return;
+
+}
+
 void HashTable::imprimeHistoGrama(string fileName)
 {
 int i;
@@ -109,6 +141,18 @@ int HashTable::calcValueWord(string valueWord){
         soma=soma + numero;
     }
     return soma;
+
+}
+
+int HashTable::calcValueWord_2(string valueWord){
+    int i;
+    int soma=0;
+    int sizeWord = valueWord.length();
+    for(i=0; i<=sizeWord; i++){
+        int numero = static_cast<char>(valueWord[i]);
+        soma=soma * numero;
+    }
+    return abs (soma);
 
 }
 
