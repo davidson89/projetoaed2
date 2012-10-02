@@ -22,6 +22,7 @@ HashTable::HashTable(int size, float c)
     this->qtdPosicao = new int[size];
     for(i=0;i<size;i++)
     {
+	  this->qtdPosicao[i] = 0; 	 
      this->les[i] = NULL;
     }
 }
