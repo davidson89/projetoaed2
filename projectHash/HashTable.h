@@ -11,7 +11,7 @@ class HashTable
         HashTable(int size, float c);
         virtual ~HashTable();
         int m;
-        float c;
+        double c;
         Les** les;
         int *qtdPosicao;
         void addWord(string);
@@ -26,6 +26,7 @@ class HashTable
     int qtdLinha(Les *celula);
     int getIndiceValue(string);
     int functionHash(int);
+	unsigned long functionHash_2(int);
     int calcValueWord(string);
     int calcValueWord_2(string);
 };

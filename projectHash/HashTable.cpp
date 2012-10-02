@@ -62,9 +62,9 @@ void HashTable::addWord_2(string value){
 
 
     // valoeeer da string convertendo em numero
-    unsigned long  valorDaString = calcValueWord_2(value);
+   int  valorDaString = calcValueWord_2(value);
    // calcula o indice pela função hash
-    int indice = functionHash(valorDaString);
+   unsigned long indice = functionHash_2(valorDaString);
 
 
    // cria uma nova celula com a string passada
@@ -127,12 +127,19 @@ int HashTable::qtdLinha(Les *celula)
 
 }
 int HashTable::functionHash(int valueCalculated){
-    float resultParcial = valueCalculated*(this->c);
-    float resultConstant = resultParcial - (float)((int)resultParcial);
-    return (floor(resultConstant*this->m));
+    double resultParcial = valueCalculated*(this->c);
+	int parteInteira = (int)resultParcial;
+	double resultConstant =  resultParcial - parteInteira ;
+    return (abs(floor(resultConstant*this->m)));
 
 }
+unsigned long HashTable::functionHash_2(int valueCalculated){
+    double resultParcial = valueCalculated*(this->c);
+	int parteInteira = (int)resultParcial;
+	double resultConstant =  resultParcial - parteInteira ;
+    return (abs(floor(resultConstant*this->m)));
 
+}
 int HashTable::calcValueWord(string valueWord){
     int i;
     int soma=0;
@@ -147,11 +154,11 @@ int HashTable::calcValueWord(string valueWord){
 
 int HashTable::calcValueWord_2(string valueWord){
     int i;
-    int soma=0;
+    int soma=1;
     int sizeWord = valueWord.length();
     for(i=0; i<=sizeWord; i++){
         int numero = static_cast<char>(valueWord[i]);
-        soma=soma * numero;
+		if(numero > 0) soma=soma * numero;
     }
     return abs (soma);
 
