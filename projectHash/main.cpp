@@ -1,6 +1,6 @@
 #include <iostream>
 #include "HashTable.h"
-#define  M 12289
+#define  M 49157
 #define  C 0.618
 #include <cstdlib>
 #include <fstream>
