@@ -1,6 +1,6 @@
 #include <iostream>
 #include "HashTable.h"
-#define  M 49157
+#define  M 12289
 #define  C 0.618
 #include <cstdlib>
 #include <fstream>
@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 {
 
     if(argc == 0){
-        cout << "Falta de arumentos!" << endl;
+        cout << "Falta de argumentos!" << endl;
     }
     createMenu(argv[1]);
 
