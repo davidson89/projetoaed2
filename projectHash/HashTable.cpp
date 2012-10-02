@@ -16,7 +16,7 @@ using namespace std;
 HashTable::HashTable(int size, float c)
 {
     this->m=size;
-    this->c=c;
+	this->c= (sqrt(5)-1)/2;
     this->les = new Les *[size];
     int i = 0;
     this->qtdPosicao = new int[size];
@@ -128,7 +128,7 @@ int HashTable::qtdLinha(Les *celula)
 int HashTable::functionHash(int valueCalculated){
     float resultParcial = valueCalculated*(this->c);
     float resultConstant = resultParcial - (float)((int)resultParcial);
-    return (roundf(resultConstant*this->m));
+    return (floor(resultConstant*this->m));
 
 }
 
