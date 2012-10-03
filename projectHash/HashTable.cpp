@@ -246,6 +246,10 @@ void HashTable::removeWord(string word){
     int valorDaString = calcValueWord(word);
    // calcula o indice pela função hash
     int indice = functionHash(valorDaString);
+    
+    if(this->les[indice]==NULL){
+    	return;
+    }
 
     Les *anterior = this->les[indice];
     Les *atual = this->les[indice]->lesProx;

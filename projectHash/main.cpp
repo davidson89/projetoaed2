@@ -57,9 +57,14 @@ void createMenu(char* fileName) {
                     scanf("%s", word);
                     hashTable->imprimePositionValue(string(word));
                     break;
-            case 4: cout << "Digite a palavra a ser excluida" << endl;
-                    scanf("%s", palavra);
-                    hashTable->removeWord(string(palavra));
+            case 4: cout << "Digite o nome do arquivo com palavras a serem excluidas" << endl;
+            	    scanf("%s", word);
+                    arq=fopen(word,"r");
+                    while(!feof(arq)){
+        		fscanf(arq,"%s",str); //Le  a linha e grava e em str
+        		line  = str;
+        		hashTable->removeWord(line);
+       		    }
                     break;
             case 5: opt = false;
                     break;
@@ -75,6 +80,6 @@ void imprimeMenu(){
     "1 - Para direcionar a saída da tabela hash a um arquivo\n"
     "2 - Para imprimir histograma \n"
     "3 - Para procurar a posiçaõ de uma palavra\n"
-    "4 - Para excluir uma palavra\n"
+    "4 - Para excluir palavras\n"
     "5 - Para sair\n" << endl;
 }
