@@ -221,7 +221,7 @@ void HashTable::imprimePositionValue(string value){
     int count = 0;
     Les *auxLes = this->les[indice];
     if(auxLes == NULL){
-        cout << "Palavra não encontrada";
+        cout << value << ": " << indice << " -1" << endl;
         return;
     }
     while(auxLes != NULL){
