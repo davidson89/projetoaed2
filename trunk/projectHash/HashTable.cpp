@@ -221,18 +221,18 @@ void HashTable::imprimePositionValue(string value){
     int count = 0;
     Les *auxLes = this->les[indice];
     if(auxLes == NULL){
-        cout << value << ": " << indice << " -1" << endl;
+        cout << value << " " << indice << " -1" << endl;
         return;
     }
     while(auxLes != NULL){
         if(auxLes->valor == value){
-            cout << value << ": " << indice << " " << count << endl;
+            cout << value << " " << indice << " " << count << endl;
             return;
         }
         count++;
         auxLes = auxLes->lesProx;
     }
-    cout << value << ": " << indice << " -1" << endl;
+    cout << value << " " << indice << " -1" << endl;
 }
 
 /**
