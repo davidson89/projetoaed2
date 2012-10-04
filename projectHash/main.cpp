@@ -30,7 +30,6 @@ void createMenu(char* fileName){
     FILE *arq;
     HashTable *hashTable = new HashTable(M);
     ifstream myfile(fileName);
-    char *palavra = new char[50];
 
     arq = fopen(fileName, "r");
     char *str = new char[100];
@@ -56,16 +55,25 @@ void createMenu(char* fileName){
                     scanf("%s", word);
                     hashTable->imprimePositionValue(string(word));
                     break;
-            case 4: cout << "Digite o nome do arquivo com palavras a serem excluidas" << endl;
+            case 4: cout << "Digite o nome do arquivo que contem as palavras a serem procuradas na Hash table: " << endl;
+                    scanf("%s", word);
+                    arq = fopen(word, "r");
+                    while(!feof(arq)){
+                        fscanf(arq, "%s", str);
+                        line = str;
+                        hashTable->imprimePositionValue(line);
+                    }
+                    break;
+            case 5: cout << "Digite o nome do arquivo que contem as palavras a serem excluidas da Hash table: " << endl;
             	    scanf("%s", word);
                     arq = fopen(word, "r");
                     while(!feof(arq)){
-                        fscanf(arq, "%s",str);
+                        fscanf(arq, "%s", str);
                         line = str;
                         hashTable->removeWord(line);
                     }
                     break;
-            case 5: opt = false;
+            case 6: opt = false;
                     break;
         }
     }
@@ -74,10 +82,11 @@ void createMenu(char* fileName){
 void imprimeMenu(){
     cout << "************************MENU************************\n"
     "Digite: \n"
-    "0 - Para imprimir a tabela hash gerada\n"
-    "1 - Para direcionar a saída da tabela hash a um arquivo\n"
-    "2 - Para imprimir histograma \n"
-    "3 - Para procurar a posiçaõ de uma palavra\n"
-    "4 - Para excluir palavras\n"
-    "5 - Para sair\n" << endl;
+    "0 - Para imprimir na tela a tabela hash gerada\n"
+    "1 - Para direcionar a saida da tabela hash num arquivo\n"
+    "2 - Para gerar um arquivo com os dados para o histograma \n"
+    "3 - Para imprimir na tela a posicao de uma palavra\n"
+    "4 - Para imprimir na tela as posicoes das palavras contidas num arquivo\n"
+    "5 - Para excluir as palavras contidas num arquivo\n"
+    "6 - Para sair\n" << endl;
 }
