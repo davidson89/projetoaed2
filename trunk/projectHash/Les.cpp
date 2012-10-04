@@ -2,8 +2,8 @@
 
 Les::Les(string valor)
 {
-this->valor = valor;
-this->lesProx= NULL;
+    this->valor = valor;
+    this->lesProx = NULL;
 }
 
 Les::~Les()

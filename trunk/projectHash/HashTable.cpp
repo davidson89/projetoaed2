@@ -5,308 +5,275 @@
 #include "Les.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 /**
- * HashTable - Classe usada para guardar palavras
- * @param  size tamanho da tabela hash
- * @param c fator de carga da tabela
- *
+ * HashTable - Construtor da classe usada para guardar strings
+ * @param size tamanho da tabela Hash, é a constante M definida na classe main
 **/
-HashTable::HashTable(int size, float c)
+HashTable::HashTable(int size)
 {
-    this->m=size;
-	this->c= (sqrt(5)-1)/2;
+    this->m = size;
+	this->c = (sqrt(5)-1)/2;
     this->les = new Les *[size];
-    int i = 0;
     this->qtdPosicao = new int[size];
-    for(i=0;i<size;i++)
-    {
-	  this->qtdPosicao[i] = 0; 	 
-     this->les[i] = NULL;
+    for(int i = 0; i < size; i++){
+        this->qtdPosicao[i] = 0;
+        this->les[i] = NULL;
     }
 }
 
+/**
+ * addWord - Método usado para armazenar strings na Hash table
+ * Usa-se a soma dos caracteres ASCII da string para calcular o Hash
+ * @param value string a ser armazenada na Hash table
+**/
 void HashTable::addWord(string value){
-
-
-    // valoeeer da string convertendo em numero
+    // valor da string convertendo em numero
     int valorDaString = calcValueWord(value);
-   // calcula o indice pela função hash
+    // calcula o indice pela função hash
     int indice = functionHash(valorDaString);
-
-   // cria uma nova celula com a string passada
+    // cria uma nova celula com a string passada
     Les *newCel = new Les(value);
-    // se o indice de destino tiver a primeira posiçao nula entao newcel se torna o primeiro
-    if( this->les[indice] == NULL)
-    {
-    // cout << "indice vazio " << indice << endl;
-     this->les[indice] = newCel;
-
-    } else
-    {
+    // se o indice de destino tiver a primeira posição nula entao newcel se torna o primeiro
+    if(this->les[indice] == NULL){
+        this->les[indice] = newCel;
+    } else {
         // caso contrario percorremos a lista até chegar no ultimo
-    Les *Cel = this->les[indice];
-    while (Cel->lesProx != NULL)
-        {
+        Les *Cel = this->les[indice];
+        while (Cel->lesProx != NULL){
             Cel = Cel->lesProx;
         }
         Cel->lesProx = newCel;
     }
-
-    return;
-
 }
 
+/**
+ * addWord2 - Método usado para armazenar strings na Hash table
+ * Usa-se a multiplicação dos caracteres ASCII da string para calcular o Hash
+ * @param value string a ser armazenada na Hash table
+**/
 void HashTable::addWord_2(string value){
-
-
-    // valoeeer da string convertendo em numero
-   int  valorDaString = calcValueWord_2(value);
-   // calcula o indice pela função hash
-   unsigned long indice = functionHash_2(valorDaString);
-
-
-   // cria uma nova celula com a string passada
+    // valor da string convertendo em numero
+    int valorDaString = calcValueWord_2(value);
+    // calcula o indice pela função hash
+    unsigned long indice = functionHash(valorDaString);
+    // cria uma nova celula com a string passada
     Les *newCel = new Les(value);
     // se o indice de destino tiver a primeira posiçao nula entao newcel se torna o primeiro
-    if( this->les[indice] == NULL)
-    {
-    // cout << "indice vazio " << indice << endl;
-     this->les[indice] = newCel;
-
-    } else
-    {
+    if(this->les[indice] == NULL){
+        this->les[indice] = newCel;
+    } else {
         // caso contrario percorremos a lista até chegar no ultimo
-    Les *Cel = this->les[indice];
-    while (Cel->lesProx != NULL)
-        {
+        Les *Cel = this->les[indice];
+        while (Cel->lesProx != NULL){
             Cel = Cel->lesProx;
         }
         Cel->lesProx = newCel;
     }
-
-    return;
-
 }
 
-void HashTable::imprimeHistoGrama(string fileName)
-{
-int i;
-int qtd = 0;
-// percorremos a lista de endereços da tabela hash
-// nesse metodo, procuramos em cada endereço , quantidade de elementos que ele possui
-// uma vez calculado, vamos no indice do array qtdPosicao, esse indice tem o mesmo valor da quantidade de elementos calculada
-// nessa posição é adicionado +1 ,ex:  se lermos o valor na posição X do array e o resultado for 20
-// significa que 20 endereços tem X elementos
- for(i=0;i<this->m;i++)
-    {
-		 // para cada endereço calculamos a qtd de elementos
-     qtd = qtdLinha(this->les[i]);
-	 // a qtd de elementos determina a posição do array de histograma que será incrementada
-     this->qtdPosicao[qtd]++;
+/**
+ * imprimeHistoGrama - Método usado para gerar um arquivo externo contendo a quantidade de índices que possuem uma determinada quantidade de elementos
+ * Exemplo: 3, 200
+ * Significa que 200 índices possuem 3 elementos cada.
+ * @param fileName nome do arquivo de saída
+**/
+void HashTable::imprimeHistoGrama(string fileName){
+    // percorremos a lista de endereços da tabela hash
+    // nesse metodo, procuramos em cada endereço , quantidade de elementos que ele possui
+    // uma vez calculado, vamos no indice do array qtdPosicao, esse indice tem o mesmo valor da quantidade de elementos calculada
+    // nessa posição é adicionado +1 ,ex:  se lermos o valor na posição X do array e o resultado for 20
+    // significa que 20 endereços tem X elementos
+    int qtd = 0;
+    for(int i = 0; i < this->m; i++){
+        // para cada endereço calculamos a qtd de elementos
+        qtd = qtdLinha(this->les[i]);
+        // a qtd de elementos determina a posição do array de histograma que será incrementada
+        this->qtdPosicao[qtd]++;
     }
- // cria o arquivo para gravar os dados
-  ofstream File (fileName.data());
-  if (!File.is_open())
-  {
-  // se nao foi possivel gerar o arquivo
-    cout << "Não foi possível abrir o arquivo";
-    return;
-  }
-  // imprimimos o arquivo com valores separados por virgula
-  for(i=0;i<this->m;i++)
-  {
-    File << i << "," << this->qtdPosicao[i] <<endl ;
-
-  }
+    // cria o arquivo para gravar os dados
+    ofstream File(fileName.data());
+    if(!File.is_open()){
+        // se nao foi possivel gerar o arquivo
+        cout << "Não foi possível abrir o arquivo";
+        return;
+    }
+    // imprimimos o arquivo com valores separados por virgula
+    for(int i = 0; i < this->m; i++){
+        File << i << "," << this->qtdPosicao[i] << endl;
+    }
 }
 
-int HashTable::qtdLinha(Les *celula)
-{
- int qtd =0;
- // calcula a quantidade elementos de um dado endereço
- while(celula !=NULL)
-  {
-   celula = celula->lesProx;
-   qtd++;
-  }
-
-  return qtd;
-
+/**
+ * qtdLinha - Método usado para contar a quantidade de elementos dentro de determinado índice
+ * @param celula ponteiro para o índice de Les
+ * @return retorna a quantidade de elementos dentro do índice
+**/
+int HashTable::qtdLinha(Les *celula){
+    int qtd =0;
+    // calcula a quantidade elementos de um dado endereço
+    while(celula != NULL){
+        celula = celula->lesProx;
+        qtd++;
+    }
+    return qtd;
 }
-// calcula o indice para o valor de elemento passado com parametro ( usado na abordagem da soma )
+
+/**
+ * functionHash - Método usado para determinar o índice para uma string na Hash table
+ * @param valueCalculated valor da palavra previamente calculado pelo método calcValueWord
+ * @return retorna um número inteiro que será usado como índice para a string na Hash table
+**/
 int HashTable::functionHash(int valueCalculated){
-    // multiplica o valor passado pela constante c
-	double resultParcial = valueCalculated*(this->c);
-	// pega a parte inteira do valor
-	int parteInteira = (int)resultParcial;
-	// usa a parte inteira e o valor original para conseguir a parte fracionaria
-	double resultConstant =  resultParcial - parteInteira ;
-	// multiplicamos o vamor por m e arredondamos para baixo
+    double resultParcial = valueCalculated * (this->c);
+	int parteInteira = (int) resultParcial;
+	double resultConstant = resultParcial - parteInteira;
     return (abs(floor(resultConstant*this->m)));
-
-}
-// calcula o indice para o valor de elemento passado com parametro ( usado na abordagem da multiplicação )
-unsigned long HashTable::functionHash_2(int valueCalculated){
-	    // multiplica o valor passado pela constante c
-    double resultParcial = valueCalculated*(this->c);
-		// pega a parte inteira do valor
-	int parteInteira = (int)resultParcial;
-	// usa a parte inteira e o valor original para conseguir a parte fracionaria
-	double resultConstant =  resultParcial - parteInteira ;
-	// multiplicamos o vamor por m e arredondamos para baixo
-    return (abs(floor(resultConstant*this->m)));
-
 }
 
+/**
+ * calcValueWord - Método usado para somar os caracteres ASCII da string
+ * @param valueWord a própria string
+ * @return retorna a soma dos caracteres ASCII
+**/
 int HashTable::calcValueWord(string valueWord){
-    int i;
-	// soma total
     int soma=0;
-	// o total de caracteres da string
     int sizeWord = valueWord.length();
-	// para caracter somamos na variavel seu valor
-    for(i=0; i<=sizeWord; i++){
+    for(int i = 0; i <= sizeWord; i++){
         int numero = static_cast<char>(valueWord[i]);
-        soma=soma + numero;
+        soma += numero;
     }
     return soma;
-
 }
 
+/**
+ * calcValueWord_2 - Método usado para multiplicar os caracteres ASCII da string
+ * @param valueWord a própria string
+ * @return retorna a multiplicação dos caracteres ASCII
+**/
 int HashTable::calcValueWord_2(string valueWord){
-    int i;
-	// variavel usada para armazenar a multiplicação
-    int multiplicacao=1;
-	
-    
+    int mult = 1;
     int sizeWord = valueWord.length();
-	// para caracter multiplicamos na variavel seu valor
-    for(i=0; i<=sizeWord; i++){
+    for(int i = 0; i <= sizeWord; i++){
         int numero = static_cast<char>(valueWord[i]);
-		// para o caso de caracters com valor 0 , nao ocorrer de zerar o valor total
-		if(numero > 0) multiplicacao=multiplicacao * numero;
+		if(numero > 0) mult *= numero;
     }
-    return abs (multiplicacao);
-
+    return abs(mult);
 }
 
+/**
+ * imprime - Método usado para imprimir na tela toda estrutura da Hash table
+**/
 void HashTable::imprime(){
-    int i = 0;
-   // para cada endereço da tabela
-	for(i=0;i<this->m;i++)
-    {
-       if(this->les[i] ==NULL)
-       {
-         // se for vazio o endereço 
-		   cout << "linha " << i << ": \n"<<  endl ;
+    for(int i = 0; i < this->m; i++){
+        if(this->les[i] == NULL){
+            cout << "linha " << i << ": \n" <<  endl;
             continue;
-       }
-      // referencia o endereço
-	   Les *celula = this->les[i];
-	   // inicia a impressao da lista encadeada simples
+        }
+        Les *celula = this->les[i];
         cout << "linha " << i << ": ";
-      // enquanto não encontrar o fim
-		while(celula!=NULL)
-       {
-		   // imprime o valor
-        cout << celula->valor << " | " ;
-		// parte para o proximo elemento
-        celula=celula->lesProx;
-       }
-      cout << "\n" << endl ;
+        while(celula != NULL){
+            cout << celula->valor << " | ";
+            celula = celula->lesProx;
+        }
+        cout << "\n" << endl;
     }
-
 }
 
-void HashTable::imprimeTxt(string fileName)
-{
-	// cria o arquivo utilizado para armazenar os valores
-   ofstream File (fileName.data());
-  if (!File.is_open())
-  {
-	  // caso nao consiga abrir o arquivo ,retorna o erro
-    cout << "Não foi possível abrir o arquivo";
-    return;
-  }
+/**
+ * imprimeTxt - Método usado para gerar um arquivo externo contendo toda estrutura da Hash table
+ * @param fileName nome do arquivo a ser criado
+**/
+void HashTable::imprimeTxt(string fileName){
+    // cria o arquivo utilizado para armazenar os valores
+    ofstream File(fileName.data());
+    if(!File.is_open()){
+        // caso nao consiga abrir o arquivo ,retorna o erro
+        cout << "Não foi possível abrir o arquivo";
+        return;
+    }
 
-    int i = 0;
-	// para cada endereço da tabela
-     for(i=0;i<this->m;i++)
-    {
-       if(this->les[i] ==NULL)
-       {  // se for vazio o endereço 
-            File << "linha " << i << ": \n"<<  endl ;
+    for(int i = 0; i < this->m; i++){
+        if(this->les[i] == NULL){
+            File << "linha " << i << ": \n" <<  endl;
             continue;
-       }
-	    // referencia o endereço
-       Les *celula = this->les[i];
-	     // inicia a impressao da lista encadeada simples
-       File  << "linha " << i << ": ";
-	      // enquanto não encontrar o fim
-       while(celula!=NULL)
-       {
-		   	   // imprime o valor
-        File << celula->valor << " | " ;
-			// parte para o proximo elemento
-        celula=celula->lesProx;
-       }
-       File << "\n" << endl;
+        }
+        Les *celula = this->les[i];
+        File  << "linha " << i << ": ";
+        while(celula != NULL){
+            File << celula->valor << " | ";
+            celula = celula->lesProx;
+        }
+        File << "\n" << endl;
     }
-	 // fecha o arquivo
-	 File.close();
-
-
+    File.close();
 }
 
+/**
+ * imprimePositionValue - Método usado para imprimir a string, o índice e a posição da string na Hash table, imprime o índice seguido de -1 caso a string não exista
+ * @param value a própria string a ser procurada
+ * Exemplo: apache 32 3
+**/
 void HashTable::imprimePositionValue(string value){
     int indice = getIndiceValue(value);
     int count = 0;
     Les *auxLes = this->les[indice];
-    if(auxLes==NULL){
+    if(auxLes == NULL){
         cout << "Palavra não encontrada";
         return;
     }
-    while(auxLes!=NULL){
-        if(auxLes->valor==value){
+    while(auxLes != NULL){
+        if(auxLes->valor == value){
             cout << value << ": " << indice << " " << count << endl;
             return;
         }
-        count ++;
+        count++;
         auxLes = auxLes->lesProx;
     }
     cout << value << ": " << indice << " -1" << endl;
 }
 
-int HashTable::getIndiceValue(string value) {
+/**
+ * getIndiceValue - Método usado para retornar o índice onde a string deveria estar na Hash table
+ * @param value a própria string a ser procurada
+ * @return índice onde a string deveria estar na Hash table
+**/
+int HashTable::getIndiceValue(string value){
     int valorDaString = calcValueWord(value);
     return functionHash(valorDaString);
 }
 
+/**
+ * removeWord - Método usado para remover a string da Hash table. Não faz nada caso a string não exista na Hash table.
+ * @param word a string a ser removida
+**/
 void HashTable::removeWord(string word){
     int valorDaString = calcValueWord(word);
-   // calcula o indice pela função hash
+    // calcula o indice pela função hash
     int indice = functionHash(valorDaString);
-    
-    if(this->les[indice]==NULL){
-    	return;
+    // caso o índice não contenha string alguma, não há o que remover
+    if(this->les[indice] == NULL){
+        return;
     }
 
     Les *anterior = this->les[indice];
     Les *atual = this->les[indice]->lesProx;
-    for (atual; atual!=NULL; atual=atual->lesProx){
-        if (word==atual->valor){
+    for (atual; atual != NULL; atual = atual->lesProx){
+        if (word == atual->valor){
             anterior->lesProx = atual->lesProx;
-            free(atual);
+            delete atual;
         }
-        anterior=atual;
+        anterior = atual;
     }
-    if(this->les[indice]->valor==word){
+    //caso a string esteja na primeira posição
+    if(this->les[indice]->valor == word){
         Les *aux = this->les[indice];
-        //free(aux);
         this->les[indice] = this->les[indice]->lesProx;
+        delete aux;
     }
+    delete atual;
 }
 
 HashTable::~HashTable()
