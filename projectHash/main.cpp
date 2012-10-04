@@ -1,10 +1,10 @@
 #include <iostream>
 #include "HashTable.h"
 #define  M 49157
-#define  C 0.618
 #include <cstdlib>
 #include <fstream>
 #include <stdio.h>
+
 using namespace std;
 using std::string;
 
@@ -13,7 +13,6 @@ void imprimeMenu();
 
 int main(int argc, char** argv)
 {
-
     if(argc == 0){
         cout << "Falta de argumentos!" << endl;
     }
@@ -22,24 +21,25 @@ int main(int argc, char** argv)
     return 0;
 }
 
-void createMenu(char* fileName) {
+void createMenu(char* fileName){
     bool opt = true;
     int valor;
-    string line="";
+    string line = "";
     char *word = new char[50];
     char *fileNameOut = new char[50];
     FILE *arq;
-    HashTable *hashTable = new HashTable(M,C);
-    ifstream myfile (fileName);
+    HashTable *hashTable = new HashTable(M);
+    ifstream myfile(fileName);
     char *palavra = new char[50];
 
-    arq=fopen(fileName,"r");
+    arq = fopen(fileName, "r");
     char *str = new char[100];
     while(!feof(arq)){
-        fscanf(arq,"%s",str); //Le  a linha e grava e em str
-        line  = str;
+        fscanf(arq, "%s", str);
+        line = str;
         hashTable->addWord(line);
     }
+
     while(opt){
         imprimeMenu();
         scanf("%d", &valor);
@@ -50,7 +50,6 @@ void createMenu(char* fileName) {
                     scanf("%s", fileNameOut);
                     hashTable->imprimeTxt(string(fileNameOut));
                     break;
-
             case 2: hashTable->imprimeHistoGrama("saidaHistograma.txt");
                     break;
             case 3: cout << "Digite a palavra a ser procurada: " << endl;
@@ -59,16 +58,15 @@ void createMenu(char* fileName) {
                     break;
             case 4: cout << "Digite o nome do arquivo com palavras a serem excluidas" << endl;
             	    scanf("%s", word);
-                    arq=fopen(word,"r");
+                    arq = fopen(word, "r");
                     while(!feof(arq)){
-        		fscanf(arq,"%s",str); //Le  a linha e grava e em str
-        		line  = str;
-        		hashTable->removeWord(line);
-       		    }
+                        fscanf(arq, "%s",str);
+                        line = str;
+                        hashTable->removeWord(line);
+                    }
                     break;
             case 5: opt = false;
                     break;
-
         }
     }
 }
