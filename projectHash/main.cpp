@@ -32,6 +32,10 @@ void createMenu(char* fileName){
     ifstream myfile(fileName);
 
     arq = fopen(fileName, "r");
+    if(arq == NULL){
+        cout << "Arquivo com as palavras a serem carregadas nao encontrado!\n" << endl;
+        return;
+    }
     char *str = new char[100];
     while(!feof(arq)){
         fscanf(arq, "%s", str);
@@ -58,6 +62,10 @@ void createMenu(char* fileName){
             case 4: cout << "Digite o nome do arquivo que contem as palavras a serem procuradas na Hash table: " << endl;
                     scanf("%s", word);
                     arq = fopen(word, "r");
+                    if(arq == NULL){
+                        cout << "Arquivo nao encontrado!\n" << endl;
+                        break;
+                    }
                     while(!feof(arq)){
                         fscanf(arq, "%s", str);
                         line = str;
@@ -67,6 +75,10 @@ void createMenu(char* fileName){
             case 5: cout << "Digite o nome do arquivo que contem as palavras a serem excluidas da Hash table: " << endl;
             	    scanf("%s", word);
                     arq = fopen(word, "r");
+                    if(arq == NULL){
+                        cout << "Arquivo nao encontrado!\n" << endl;
+                        break;
+                    }
                     while(!feof(arq)){
                         fscanf(arq, "%s", str);
                         line = str;
