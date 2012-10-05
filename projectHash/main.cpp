@@ -21,6 +21,10 @@ int main(int argc, char** argv)
     return 0;
 }
 
+/**
+ * createMenu - Método usado para criar o menu com as opções de munipulação que serão fornecidas ao usuário.
+ * @param fileName nome do arquivo contendo as palavras a serem carregadas na Hash Table 
+**/
 void createMenu(char* fileName){
     bool opt = true;
     int valor;
@@ -54,6 +58,7 @@ void createMenu(char* fileName){
                     hashTable->imprimeTxt(string(fileNameOut));
                     break;
             case 2: hashTable->imprimeHistoGrama("saidaHistograma.txt");
+		    cout << "O arquivo saidaHistograma.txt foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
                     break;
             case 3: cout << "Digite a palavra a ser procurada: " << endl;
                     scanf("%s", word);
@@ -91,6 +96,10 @@ void createMenu(char* fileName){
     }
 }
 
+/**
+ *imprimeMenu - Método usado para ficar imprimir o menu com as opções para rodar o manipular o sistema como um todo.
+ *
+**/
 void imprimeMenu(){
     cout << "************************MENU************************\n"
     "Digite: \n"
