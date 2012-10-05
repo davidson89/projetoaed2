@@ -13,6 +13,8 @@ void imprimeMenu();
 
 int main(int argc, char** argv)
 {
+
+
     if(argc == 0){
         cout << "Falta de argumentos!" << endl;
     }
@@ -23,7 +25,7 @@ int main(int argc, char** argv)
 
 /**
  * createMenu - Método usado para criar o menu com as opções de munipulação que serão fornecidas ao usuário.
- * @param fileName nome do arquivo contendo as palavras a serem carregadas na Hash Table 
+ * @param fileName nome do arquivo contendo as palavras a serem carregadas na Hash Table
 **/
 void createMenu(char* fileName){
     bool opt = true;
