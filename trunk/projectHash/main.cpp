@@ -56,6 +56,7 @@ void createMenu(char* fileName){
             case 1: cout << "Digite o nome do arquivo a ser gerado: " << endl;
                     scanf("%s", fileNameOut);
                     hashTable->imprimeTxt(string(fileNameOut));
+		    cout << "O arquivo "<< fileNameOut << " foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
                     break;
             case 2: hashTable->imprimeHistoGrama("saidaHistograma.txt");
 		    cout << "O arquivo saidaHistograma.txt foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
