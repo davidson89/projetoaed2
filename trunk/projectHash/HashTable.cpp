@@ -256,13 +256,41 @@ void HashTable::removeWord(string word){
     // caso o índice não contenha string alguma, não há o que remover
     if(this->les[indice] == NULL){
         return;
-    }
 
+   }
+   Les *elemento = this->les[indice];
+   Les *elementoAnterior;
+
+  if(elemento->valor == word)
+        {
+          this->les[indice] = elemento->lesProx;
+          delete elemento;
+          return;
+        }
+
+   while (elemento !=NULL)
+   {
+
+        if(elemento->valor == word)
+        {
+           elementoAnterior->lesProx = elemento->lesProx;
+          delete elemento;
+          return;
+        }
+
+        elementoAnterior = elemento;
+        elemento = elemento->lesProx;
+
+   }
+
+
+   /*
     Les *anterior = this->les[indice];
     Les *atual = this->les[indice]->lesProx;
     for (atual; atual != NULL; atual = atual->lesProx){
         if (word == atual->valor){
             anterior->lesProx = atual->lesProx;
+            cout << "deletou " << atual->valor <<endl;
             delete atual;
         }
         anterior = atual;
@@ -271,9 +299,11 @@ void HashTable::removeWord(string word){
     if(this->les[indice]->valor == word){
         Les *aux = this->les[indice];
         this->les[indice] = this->les[indice]->lesProx;
+        cout << "deletou " << aux->valor <<endl;
         delete aux;
     }
     delete atual;
+    */
 }
 
 HashTable::~HashTable()
