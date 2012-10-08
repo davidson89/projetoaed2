@@ -325,10 +325,12 @@ HashTable::~HashTable()
        elemento = Prox_elemento;
        Prox_elemento = NULL;
      }
-     // deleta o array de histograma
 
    }
+       // deleta o array de histograma
+
    delete[] qtdPosicao;
+   // deleta o array de elementos
      delete[] this->les;
 
 
