@@ -13,8 +13,6 @@ void imprimeMenu();
 
 int main(int argc, char** argv)
 {
-
-
     if(argc == 0){
         cout << "Falta de argumentos!" << endl;
     }
@@ -58,10 +56,10 @@ void createMenu(char* fileName){
             case 1: cout << "Digite o nome do arquivo a ser gerado: " << endl;
                     scanf("%s", fileNameOut);
                     hashTable->imprimeTxt(string(fileNameOut));
-		    cout << "O arquivo "<< fileNameOut << " foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
+                    cout << "O arquivo "<< fileNameOut << " foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
                     break;
             case 2: hashTable->imprimeHistoGrama("saidaHistograma.txt");
-		    cout << "O arquivo saidaHistograma.txt foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
+                    cout << "O arquivo saidaHistograma.txt foi gerado com sucesso e encontra-se no diretorio raiz!" << endl;
                     break;
             case 3: cout << "Digite a palavra a ser procurada: " << endl;
                     scanf("%s", word);
@@ -94,19 +92,17 @@ void createMenu(char* fileName){
                     }
                     break;
             case 6: opt = false;
-             delete hashTable;
+                    delete hashTable;
                     break;
         }
     }
-
-
     delete[] word;
     delete[] fileNameOut;
     delete[] str;
 }
 
 /**
- *imprimeMenu - Método usado para ficar imprimir o menu com as opções para rodar o manipular o sistema como um todo.
+ *imprimeMenu - Método usado para imprimir o menu do sistema.
  *
 **/
 void imprimeMenu(){
