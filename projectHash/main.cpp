@@ -46,6 +46,7 @@ void createMenu(char* fileName){
         line = str;
         hashTable->addWord(line);
     }
+    fclose(arq);
 
     while(opt){
         imprimeMenu();
@@ -77,6 +78,7 @@ void createMenu(char* fileName){
                         line = str;
                         hashTable->imprimePositionValue(line);
                     }
+                    fclose(arq);
                     break;
             case 5: cout << "Digite o nome do arquivo que contem as palavras a serem excluidas da Hash table: " << endl;
             	    scanf("%s", word);
@@ -90,6 +92,7 @@ void createMenu(char* fileName){
                         line = str;
                         hashTable->removeWord(line);
                     }
+                    fclose(arq);
                     break;
             case 6: opt = false;
                     delete hashTable;

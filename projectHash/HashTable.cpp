@@ -41,11 +41,11 @@ void HashTable::addWord(string value){
         this->les[indice] = newCel;
     } else {
         // caso contrario percorremos a lista até chegar no ultimo
-        Les *Cel = this->les[indice];
-        while (Cel->lesProx != NULL){
-            Cel = Cel->lesProx;
+        Les *cel = this->les[indice];
+        while (cel->lesProx != NULL){
+            cel = cel->lesProx;
         }
-        Cel->lesProx = newCel;
+        cel->lesProx = newCel;
     }
 }
 
@@ -66,11 +66,11 @@ void HashTable::addWord_2(string value){
         this->les[indice] = newCel;
     } else {
         // caso contrario percorremos a lista até chegar no ultimo
-        Les *Cel = this->les[indice];
-        while (Cel->lesProx != NULL){
-            Cel = Cel->lesProx;
+        Les *cel = this->les[indice];
+        while (cel->lesProx != NULL){
+            cel = cel->lesProx;
         }
-        Cel->lesProx = newCel;
+        cel->lesProx = newCel;
     }
 }
 
