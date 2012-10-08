@@ -94,9 +94,15 @@ void createMenu(char* fileName){
                     }
                     break;
             case 6: opt = false;
+             delete hashTable;
                     break;
         }
     }
+
+
+    delete[] word;
+    delete[] fileNameOut;
+    delete[] str;
 }
 
 /**
