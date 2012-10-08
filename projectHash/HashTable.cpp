@@ -308,5 +308,29 @@ void HashTable::removeWord(string word){
 
 HashTable::~HashTable()
 {
+
+
+   // inicia a limpeza na tabela
+   int i;
+   int tamanho = this->m;
+   for (i=0;i<tamanho;i++)
+   {
+     Les *elemento = this->les[i];
+     Les *Prox_elemento = NULL;
+
+     while(elemento !=NULL)
+     {
+       Prox_elemento = elemento->lesProx;
+       delete elemento;
+       elemento = Prox_elemento;
+       Prox_elemento = NULL;
+     }
+     // deleta o array de histograma
+
+   }
+   delete[] qtdPosicao;
+     delete[] this->les;
+
+
     //dtor
 }
